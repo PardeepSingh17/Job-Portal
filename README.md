@@ -106,7 +106,7 @@ npm run dev
 
 ---
 
-## 👨 Author
+##  Author
 
 Built by PARDEEP SINGH
 
