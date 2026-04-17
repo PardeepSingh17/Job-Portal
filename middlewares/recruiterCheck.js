@@ -2,7 +2,10 @@
 
 async function recruiterCheck(req, res, next) {
     if(req.user.role !== "recruiter") {
-        return res.status(403).json({message : "Access denied"})
+        return res.status(403).json({
+            success : false,
+            message : "Access denied"
+        })
     }
     next()
 }

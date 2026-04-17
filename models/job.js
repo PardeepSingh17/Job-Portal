@@ -26,8 +26,13 @@ let jobSchema = new Schema ({
         type : Schema.Types.ObjectId,
         ref : 'User',
         required : true
-    }
-} , {Timestamp : true})
+    } ,
+    applications : [{
+        applicant : Schema.Types.ObjectId,
+        appliedAt : Date,
+        resume : String
+    }]
+} , {timestamps : true})
 
 let Job = mongoose.model("Job" , jobSchema)
 
