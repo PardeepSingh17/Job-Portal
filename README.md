@@ -169,6 +169,10 @@ Make sure to set environment variables in the deployment dashboard.
 
 ---
 
+## Live demo link
+
+https://job-portal-3izy.onrender.com
+
 ##  Author
 
 **Pardeep Singh**
