@@ -1,21 +1,59 @@
-#  Job Portal Backend (MERN)
+# 🚀 Job Portal Backend (Production Ready)
 
-A production-ready Job Portal backend built using **Node.js, Express, and MongoDB**.
-This project implements secure authentication, role-based access control, and scalable REST APIs for managing job listings.
+A fully functional and production-ready Job Portal backend built using **Node.js, Express, and MongoDB**.
+This project includes authentication, role-based access control, job management, and a complete job application system with file uploads.
 
 ---
 
 ##  Features
 
-*  JWT-based Authentication (Login/Register)
-*  Password hashing using bcrypt
-*  Role-based Access Control (Candidate / Recruiter)
-*  Protected Routes using Middleware
-*  Job CRUD APIs (Create, Read, Delete)
-*  Ownership-based Authorization (only creator can delete job)
-*  Advanced Search & Filtering (location, title)
-*  Pagination support for large datasets
-*  MVC Architecture (clean and scalable structure)
+###  Authentication & Authorization
+
+* JWT-based Authentication (Login/Register)
+* Password hashing using bcrypt
+* Role-based Access Control (Candidate / Recruiter)
+* Protected routes using middleware
+
+---
+
+###  Job Management
+
+* Create, view, and delete job listings
+* Ownership-based authorization (only creator can delete job)
+* Advanced filtering:
+
+  * Location
+  * Title
+  * Company
+  * Salary range
+* Sorting (e.g., by salary)
+* Pagination for large datasets
+
+---
+
+###  Job Application System
+
+* Apply to jobs (authenticated users)
+* Prevent duplicate applications
+* Resume upload using Multer
+* Store resume file paths in database
+* Fetch all applied jobs for a user
+
+---
+
+###  Security & Validation
+
+* Rate limiting using express-rate-limit
+* Input validation using Joi
+* Secure API responses with consistent structure
+* Error handling middleware (production-ready)
+
+---
+
+###  Architecture
+
+* MVC pattern (Controllers, Routes, Models, Middleware)
+* Clean and scalable folder structure
 
 ---
 
@@ -24,8 +62,10 @@ This project implements secure authentication, role-based access control, and sc
 * **Backend:** Node.js, Express.js
 * **Database:** MongoDB (Mongoose)
 * **Authentication:** JWT (jsonwebtoken)
-* **Security:** bcrypt
-* **Environment Management:** dotenv
+* **Validation:** Joi
+* **File Uploads:** Multer
+* **Security:** bcrypt, express-rate-limit
+* **Logging:** Morgan
 
 ---
 
@@ -41,46 +81,56 @@ This project implements secure authentication, role-based access control, and sc
 ###  Job Routes
 
 * `POST /api/jobs` → Create job (Recruiter only)
-* `GET /api/jobs` → Get all jobs (with filters & pagination)
+* `GET /api/jobs` → Get all jobs (filters, sorting, pagination)
 * `GET /api/jobs/:id` → Get job by ID
-* `DELETE /api/jobs/:id` → Delete job (Owner recruiter only)
+* `DELETE /api/jobs/:id` → Delete job (Owner only)
 
 ---
 
-##  Query Parameters (Filters & Pagination)
+###  Application Routes
+
+* `POST /api/jobs/:id/apply` → Apply to job (with resume upload)
+* `GET /api/jobs/applied` → Get all jobs applied by user
+
+---
+
+## 🔍 Query Parameters
 
 Examples:
 
 * `/api/jobs?location=Delhi`
 * `/api/jobs?title=Developer`
-* `/api/jobs?location=Delhi&title=Frontend`
+* `/api/jobs?company=Google`
+* `/api/jobs?salary=50000`
 * `/api/jobs?page=1&limit=5`
+* `/api/jobs?sort=salary`
 
 ---
 
 ##  Installation & Setup
 
-1. Clone the repository:
+### 1. Clone repository
 
 ```bash
 git clone https://github.com/PardeepSingh17/Job-Portal
 cd job-portal-backend
 ```
 
-2. Install dependencies:
+### 2. Install dependencies
 
 ```bash
 npm install
 ```
 
-3. Create a `.env` file:
+### 3. Create `.env` file
 
 ```env
+PORT=8080
 MONGO_URI=your_mongodb_connection_string
 JWT_SECRET=your_secret_key
 ```
 
-4. Run the server:
+### 4. Run server
 
 ```bash
 npm run dev
@@ -88,26 +138,37 @@ npm run dev
 
 ---
 
+##  Deployment
+
+This backend can be deployed on platforms like:
+
+* Render
+* Railway
+* AWS
+
+Make sure to set environment variables in the deployment dashboard.
+
+---
+
 ##  Project Highlights
 
-* Designed secure backend using **JWT + role-based authorization**
-* Implemented **ownership validation** for sensitive operations
-* Built scalable APIs with **filtering and pagination**
-* Followed **MVC architecture** for maintainability
+* Built a scalable REST API with **authentication & role-based access**
+* Implemented **job application system with resume uploads**
+* Designed **secure backend with validation and rate limiting**
+* Optimized APIs using **pagination, filtering, and sorting**
+* Followed **clean architecture (MVC pattern)**
 
 ---
 
 ##  Future Improvements
 
-* Apply to jobs (application system)
 * Save/Bookmark jobs
-* Frontend (React) integration
-* Deployment (Render / Railway)
+* Email notifications
+* Admin dashboard
+* Frontend integration (React)
 
 ---
 
 ##  Author
 
-Built by PARDEEP SINGH
-
----
+**Pardeep Singh**

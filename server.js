@@ -79,6 +79,8 @@ app.use((err, req, res, next) => {
   next()
 })
 
-app.listen(8080, () => {
+let PORT = process.env.port || 8080
+
+app.listen(PORT, () => {
     console.log("app is listening")
 })
