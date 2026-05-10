@@ -5,7 +5,7 @@ async function appliedJob(req, res) {
     try {
         let userId = req.user.id
 
-        let appliedJobs = await Job.find({"applications.applicant" : userId})
+        let appliedJobs = await Job.find({"applications.applicant" : userId}).populate("createdBy")
         
         if(appliedJobs.length === 0) {
             return res.status(404).json({

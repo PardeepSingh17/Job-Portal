@@ -5,7 +5,8 @@ const bcrypt = require('bcrypt');
 async function loginUser(req, res) {
     try {
         let {username , password} = req.body
-
+        console.log(username)
+        console.log(password)
         let checkUser = await User.findOne({username})
         
         if(checkUser){
@@ -17,11 +18,16 @@ async function loginUser(req, res) {
                     role : checkUser.role
                 } , process.env.JWT_SECRET , {expiresIn : "1d"})
 
-                res.json({token , user : {
-                    id : checkUser._id,
-                    username : checkUser.username,
-                    role : checkUser.role
-                }})
+                res.json({
+                    success : true,
+                    message : "Logged in successfully",
+                    token ,
+                    user : {
+                        id : checkUser._id,
+                        username : checkUser.username,
+                        role : checkUser.role
+                    }
+                })
             } else {
                 return res.status(400).json({
                     success : false,

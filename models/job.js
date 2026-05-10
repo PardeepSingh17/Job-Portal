@@ -28,7 +28,10 @@ let jobSchema = new Schema ({
         required : true
     } ,
     applications : [{
-        applicant : Schema.Types.ObjectId,
+        applicant : {
+            type : Schema.Types.ObjectId,
+            ref : 'User'
+        },
         appliedAt : Date,
         resume : String
     }]

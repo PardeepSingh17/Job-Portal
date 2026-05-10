@@ -4,6 +4,7 @@ const saltRounds = 10;
 
 async function registerUser(req, res) {   
     try{
+        console.log(req.body)
         let {username , email , password , role} = req.body
 
         let checkExistingUser = await User.findOne({email})
@@ -24,7 +25,7 @@ async function registerUser(req, res) {
     } catch(err) {
         return res.status(500).json({ 
             success : false,
-            message: "Something went wrong while creating account" 
+            message: err.message
         })
     }
 }

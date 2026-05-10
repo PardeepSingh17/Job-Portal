@@ -5,7 +5,8 @@ async function getJobById(req, res) {
     try {
         let {id} = req.params
         
-        let job = await Job.findById(id)
+        let job = await Job.findById(id).populate("createdBy")
+
 
         if(!job){
             return res.status(404).json({

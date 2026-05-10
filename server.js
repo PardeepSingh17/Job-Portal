@@ -6,6 +6,10 @@ const cors = require("cors")
 
 const app = express()
 
+app.use(cors({
+  origin: "http://localhost:5173"
+}))
+
 const morgan = require("morgan")
 
 app.use(morgan("dev"))
@@ -46,7 +50,7 @@ const rateLimit = require("express-rate-limit")
 
 const limiter = rateLimit({
   windowMs: 15 * 60 * 1000,
-  limit: 100
+  limit: 1000000
 })
 
 app.use(limiter)
@@ -55,8 +59,6 @@ const authRoute = require("./routes/authRoute")
 const jobsRoute = require("./routes/jobsRoute")
 
 const connectDB = require("./config/mongoConnect")
-
-app.use(cors())
 
 connectDB()
 

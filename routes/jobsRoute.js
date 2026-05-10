@@ -13,6 +13,8 @@ const { getJobById } = require("../controllers/job/getjobById")
 const { deleteJob } = require("../controllers/job/deleteJob")
 const { applyJob } = require("../controllers/job/applyJob")
 const { appliedJob } = require("../controllers/job/appliedJob")
+const { recruiterJobs } = require("../controllers/job/recruiterJob")
+const { jobAndApplicants } = require("../controllers/job/jobAndApplicants")
 
 const { upload } = require("../server")
 
@@ -21,6 +23,10 @@ router.post("/" , tokenVerify , recruiterCheck , JobSchemaCheck , newJob)
 router.get("/" , getAllJobs)
 
 router.get("/applied" , tokenVerify , appliedJob)
+
+router.get("/myJobs" , tokenVerify , recruiterCheck , recruiterJobs)
+
+router.get("/myJobs/:id", tokenVerify , recruiterCheck , isOwner , jobAndApplicants)
 
 router.get("/:id" , getJobById)
 

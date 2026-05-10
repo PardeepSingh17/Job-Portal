@@ -29,7 +29,7 @@ async function getAllJobs(req, res) {
             filter.company = {$regex : company , $options : "i"}
         }
 
-        let allJobs = await Job.find(filter).sort(sort).skip(skip).limit(limit)
+        let allJobs = await Job.find(filter).sort(sort).skip(skip).limit(limit).populate("createdBy")
         return res.status(200).json({
             success :true,
             allJobs
