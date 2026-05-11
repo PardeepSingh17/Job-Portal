@@ -164,8 +164,8 @@ Make sure to set environment variables in the deployment dashboard.
 
 * Save/Bookmark jobs
 * Email notifications
-* Admin dashboard
-* Frontend integration (React)
+* ~~Admin dashboard~~
+* ~~Frontend integration (React)~~
 
 ---
 
